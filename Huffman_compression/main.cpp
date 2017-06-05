@@ -45,36 +45,7 @@ void WordSLList::addToList(string el) {
 	 
 	}    
 }
-/*void WordSLList::deleteWord(string el) {
-	if(isInList(el)){   
-		if (head != 0)                    
-	        	 if (head == tail && el == head->info) { 
-		             delete head;                      
-		              head = tail = 0;
-        	 }
-        		 else if (el == head->info) {  
-             		 WordSLLNode *tmp = head;
-             		 head = head->next;
-             		 delete tmp;            
-        	 }
-         	 else {                       
-             		 WordSLLNode *pred, *tmp;
-             	 	 for (pred = head, tmp = head->next; 
-               	  	 tmp != 0 && !(tmp->info == el);
-                       	 pred = pred->next, tmp = tmp->next);
-             	 if (tmp != 0) {
-                	  pred->next = tmp->next;
-                 	  if (tmp == tail)
-                 	     tail = pred;
-                  	     delete tmp;
-              }
-		cout<<"This Word is deleted."<<endl;
-         }
-	}else {
-		cout<<"This Word is not in List,So you cant delete!"<<endl;}
-	
-}
-*/
+
 bool WordSLList::isInList(string el) const {
     WordSLLNode *tmp;
     for (tmp = head; tmp != 0 && !(tmp->info == el); tmp = tmp->next);
@@ -114,48 +85,7 @@ void readFileIntoLL(WordSLList *myList){
 	}
 	inFile.close();
 }
-/*void WordSLList::dictionary(){
-	int tmpnum;
-	string word;
-	bool unsorted=true;
-	while(unsorted){
-		unsorted=false;
-		WordSLLNode *cur=head;
-		while(cur->next!=0){
-			if(cur->info > cur->next->info){
-				tmpnum=cur->id;
-				cur->id=cur->next->id;
-				cur->next->id=tmpnum;
-				
-				word=cur->info;
-				cur->info=cur->next->info;
-				cur->next->info=word;				
 
-				tmpnum=cur->size;
-				cur->size=cur->next->size;
-				cur->next->size=tmpnum;
-
-				tmpnum=cur->count;
-				cur->count=cur->next->count;
-				cur->next->count=tmpnum;
-
-				unsorted=true;
-			}
-		cur=cur->next;
-		}
-	}
-	ofstream myfile;
-        myfile.open ("dictionary.txt");
-	WordSLLNode *tmp;
-	myfile<<"Word->Count->id"<<endl;
-	for(tmp=head;tmp!=0;tmp=tmp->next){
-        
-	myfile<<tmp->info<<" "<<tmp->count<<" "<<tmp->id<<endl;
-
-	}
-	myfile.close();
-}
-*/
 
 void WordSLList::add_id(){
 	int count=1;
@@ -253,64 +183,7 @@ void WordSLList::decompressor(){
 	myfile.close();
 	
 }
-/*void LowerCase(string &s)
-{
-    int dif='a'-'A';
-    for(int i=0;i<s.length();i++)
-    {
-        if((s[i]>='A')&&(s[i]<='Z'))
-            s[i]+=dif;
-    }
-}
-*/
 
-/*void WordSLList::n_count(int n){
-	int max,min,j;
-	int maxcount[n]; int mincount[n]; string min_info[n]; string max_info[n];
-	WordSLLNode *tmp;
-	string maxword,minword;
-	max=0;
-	min=head->count;
-	for(tmp=head;tmp!=0;tmp=tmp->next){
-		if(tmp->count > max){
-			max=tmp->count;
-			maxword=tmp->info;
-		}if(tmp->count < min){
-			min=tmp->count;
-			minword=tmp->info;
-		}
-	}
-	max_info[0]=maxword; min_info[0]=minword; maxcount[0]=max; mincount[0]=min;
-	int i=1;
-	while(i<n){
-		max=0; min=head->count;
-		for(tmp=head;tmp!=0;tmp=tmp->next){
-			if((tmp->count > max-1) && (tmp->count < maxcount[i-1]+1)){
-				for(j=0;j<i && tmp->info!=max_info[j];j++);
-					if(tmp->info!=max_info[j]){				
-					   max=tmp->count; maxword=tmp->info;
-					}				
-			}if((tmp->count < min +1) && (tmp->count > mincount[i-1]-1)){
-				for(j=0;j<i && tmp->info!=min_info[j];j++);
-					if(tmp->info!=min_info[j]){				
-					   min=tmp->count; minword=tmp->info;
-					}
-				
-			}
-		}
-		max_info[i]=maxword; min_info[i]=minword; maxcount[i]=max; mincount[i]=min;
-		i++;
-	}
-	cout<<"Most Used Words;"<<endl;
-	for(i=0;i<n;i++){
-		cout<<i+1<<". "<<max_info[i]<<" is used "<<maxcount[i]<<" time(s)"<<endl;	
-	}
-	cout<<"Least Used Words;"<<endl;
-	for(i=0;i<n;i++){
-		cout<<i+1<<". "<<min_info[i]<<" is used "<<mincount[i]<<" time(s)"<<endl;
-	}
-}
-*/
 
 int main(){
 	clock_t start;
