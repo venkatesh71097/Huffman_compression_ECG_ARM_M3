@@ -1,0 +1,17 @@
+import zlib, sys, time, base64
+
+text = open ('datafile1.txt', 'r').read()
+print 'Raw size:' , sys.getsizeof(text)
+
+compressed = zlib.compress(text,9)
+print 'compressed size:',sys.getsizeof(compressed)
+
+'''savecomp = open ('compdata.txt','a')
+savecomp.write(compressed)
+savecomp.close()'''
+
+decompressed = zlib.decompress(compressed)
+savecomp = open ('decomp.txt','a')
+savecomp.write(decompressed)
+savecomp.close()
+
